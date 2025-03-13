@@ -1,0 +1,28 @@
+<div class="container">
+    <!-- Top Row: Outer Observable -->
+    <h2>Outer Observable</h2>
+    <div class="outer-stream">
+      <div *ngFor="let outer of outerMarbles" class="outer-marble" [id]="'outer-' + outer.id">
+        {{ outer.value }}
+      </div>
+    </div>
+  
+    <!-- Middle Rows: Each inner observable on its own line -->
+    <h2>Inner Observables (One Row Per Outer Marble)</h2>
+    <div class="inner-stream-container">
+      <div *ngFor="let row of innerRows; let rowIndex = index" class="inner-row">
+        <div *ngFor="let inner of row" class="inner-marble" [id]="'inner-' + inner.outerIndex + '-' + inner.innerIndex">
+          {{ inner.value }}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bottom Row: Final Output -->
+    <h2>Final Output</h2>
+    <div class="output-stream">
+      <div *ngFor="let output of finalOutputMarbles" class="output-marble" [id]="'output-' + output.outerIndex + '-' + output.innerIndex">
+        {{ output.value }}
+      </div>
+    </div>
+  </div>
+  
